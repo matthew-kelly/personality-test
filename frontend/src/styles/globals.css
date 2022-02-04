@@ -26,6 +26,10 @@ a {
   @apply underline;
 }
 
+p {
+  @apply font-serif mb-8;
+}
+
 label {
   @apply block uppercase text-xs;
 }
@@ -46,4 +50,16 @@ input[type="checkbox"] + label {
 
 input[type="checkbox"]:checked + label {
   @apply bg-checkbox-checked bg-no-repeat pl-5;
+}
+
+.content {
+  @apply p-8;
+}
+
+.box {
+  @apply bg-white shadow-lg p-6;
+}
+
+.page-title {
+  @apply font-display text-5xl md:text-6xl lg:text-7xl mb-2;
 }
