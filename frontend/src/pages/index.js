@@ -39,9 +39,9 @@ const Home = () => (
 
         <button
           type="submit"
-          className="z-10 block absolute -bottom-12 left-1/2 md:left-auto md:right-0 transform -translate-x-1/2 md:translate-x-0 h-12 w-44 bg-primary font-handwriting"
+          className="button z-10 absolute -bottom-12 left-1/2 md:left-auto md:right-0 transform -translate-x-1/2 md:translate-x-0 w-44"
         >
-          <span className="text-6xl relative -top-2">Submit</span>
+          <span className="button-text">Submit</span>
         </button>
       </form>
     </div>

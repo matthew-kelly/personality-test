@@ -18,6 +18,12 @@ module.exports = {
       borderWidth: {
         1: '1px',
       },
+      height: {
+        18: '4.5rem',
+      },
+      width: {
+        18: '4.5rem',
+      },
     },
     fontFamily: {
       sans: ['"Nunito Sans"'],
