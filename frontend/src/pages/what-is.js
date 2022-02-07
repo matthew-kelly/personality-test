@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Page from '../components/Page';
 
-const WhatIs = () => (
+const WhatIsPage = () => (
   <Page>
     {/* box */}
     <div className="box">
@@ -20,4 +20,4 @@ const WhatIs = () => (
   </Page>
 );
 
-export default WhatIs;
+export default WhatIsPage;

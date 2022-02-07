@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Page from '../components/Page';
 
-const TermsAndConditions = () => (
+const TermsAndConditionsPage = () => (
   <Page>
     {/* box */}
     <div className="box">
@@ -20,4 +20,4 @@ const TermsAndConditions = () => (
   </Page>
 );
 
-export default TermsAndConditions;
+export default TermsAndConditionsPage;

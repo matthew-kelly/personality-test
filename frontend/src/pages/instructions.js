@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Answers from '../components/Answers';
 import Page from '../components/Page';
 
-export default function Instructions() {
+export default function InstructionsPage() {
   return (
     <Page>
       <div className="box">

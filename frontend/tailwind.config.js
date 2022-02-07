@@ -5,10 +5,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        primary: '#e9c376',
-        secondary: '#dfb8ac',
-      },
       backgroundImage: {
         'page-background-mobile': `url('/img/bg.jpg')`,
         'page-background-desktop': `url('/img/bg--desktop.jpg')`,
@@ -17,6 +13,13 @@ module.exports = {
       },
       borderWidth: {
         1: '1px',
+      },
+      colors: {
+        primary: '#e9c376',
+        secondary: '#dfb8ac',
+      },
+      fontSize: {
+        '10xl': '10rem',
       },
       height: {
         18: '4.5rem',
