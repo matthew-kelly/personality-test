@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import Answers from '../components/Answers';
 import Page from '../components/Page';
 
