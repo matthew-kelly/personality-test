@@ -10,7 +10,7 @@ export default function InstructionsPage() {
           <h3 className="uppercase tracking-wider mb-2">Instructions</h3>
           <h1 className="page-title">It's Easy.</h1>
           <p>Answer the following questions with:</p>
-          <Answers />
+          <Answers disabled />
           <div className="button relative mx-auto w-40 top-32 sm:top-20">
             <Link href="/questions" className="button">
               <a className="button-text no-underline">Start</a>

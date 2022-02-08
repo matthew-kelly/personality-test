@@ -268,13 +268,7 @@ input QuestionRelateToManyForCreateInput {
 type Answer {
   id: ID!
   answer: Int
-  user(
-    where: UserWhereInput! = {}
-    orderBy: [UserOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-  ): [User!]
-  userCount(where: UserWhereInput! = {}): Int
+  user: User
   question: Question
 }
 
@@ -288,14 +282,8 @@ input AnswerWhereInput {
   NOT: [AnswerWhereInput!]
   id: IDFilter
   answer: IntFilter
-  user: UserManyRelationFilter
+  user: UserWhereInput
   question: QuestionWhereInput
-}
-
-input UserManyRelationFilter {
-  every: UserWhereInput
-  some: UserWhereInput
-  none: UserWhereInput
 }
 
 input AnswerOrderByInput {
@@ -305,15 +293,14 @@ input AnswerOrderByInput {
 
 input AnswerUpdateInput {
   answer: Int
-  user: UserRelateToManyForUpdateInput
+  user: UserRelateToOneForUpdateInput
   question: QuestionRelateToOneForUpdateInput
 }
 
-input UserRelateToManyForUpdateInput {
-  disconnect: [UserWhereUniqueInput!]
-  set: [UserWhereUniqueInput!]
-  create: [UserCreateInput!]
-  connect: [UserWhereUniqueInput!]
+input UserRelateToOneForUpdateInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+  disconnect: Boolean
 }
 
 input QuestionRelateToOneForUpdateInput {
@@ -329,13 +316,13 @@ input AnswerUpdateArgs {
 
 input AnswerCreateInput {
   answer: Int
-  user: UserRelateToManyForCreateInput
+  user: UserRelateToOneForCreateInput
   question: QuestionRelateToOneForCreateInput
 }
 
-input UserRelateToManyForCreateInput {
-  create: [UserCreateInput!]
-  connect: [UserWhereUniqueInput!]
+input UserRelateToOneForCreateInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
 }
 
 input QuestionRelateToOneForCreateInput {

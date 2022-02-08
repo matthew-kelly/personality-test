@@ -28,7 +28,10 @@ export default withAuth(
       url: "file:./keystone.db",
     },
     server: {
-      cors: { origin: ["http://localhost:5000"], credentials: true },
+      cors: {
+        origin: [process.env.FRONTEND_URL],
+        credentials: true,
+      },
     },
     // // use older graphql playground
     // graphql: {

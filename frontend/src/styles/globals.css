@@ -68,6 +68,10 @@ input[type="checkbox"]:checked + label {
   @apply w-18 h-18 rounded-full border-4 border-black flex justify-center items-center uppercase leading-snug text-sm;
 }
 
+.answer[disabled] {
+  @apply cursor-default;
+}
+
 .button {
   @apply block h-12 bg-primary font-handwriting;
 }

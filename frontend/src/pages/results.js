@@ -12,7 +12,7 @@ const TYPES_QUERY = gql`
   }
 `;
 
-export default function ResultPage() {
+export default function ResultsPage() {
   const { data, loading, error } = useQuery(TYPES_QUERY);
   console.log({ data });
   return (
