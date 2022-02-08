@@ -12,28 +12,37 @@ generator client {
 }
 
 model User {
-  id       String @id @default(cuid())
-  name     String @default("")
-  email    String @unique @default("")
+  id       String   @id @default(cuid())
+  name     String   @default("")
+  email    String   @unique @default("")
   password String
-  posts    Post[] @relation("Post_author")
+  answers  Answer[] @relation("Answer_user")
 }
 
-model Post {
-  id          String    @id @default(cuid())
-  title       String    @default("")
-  status      String?   @default("draft")
-  content     String    @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
-  publishDate DateTime?
-  author      User?     @relation("Post_author", fields: [authorId], references: [id])
-  authorId    String?   @map("author")
-  tags        Tag[]     @relation("Post_tags")
+model Question {
+  id       String   @id @default(cuid())
+  question String   @default("")
+  type     Type?    @relation("Question_type", fields: [typeId], references: [id])
+  typeId   String?  @map("type")
+  answer   Answer[] @relation("Answer_question")
 
-  @@index([authorId])
+  @@index([typeId])
 }
 
-model Tag {
-  id    String @id @default(cuid())
-  name  String @default("")
-  posts Post[] @relation("Post_tags")
+model Type {
+  id          String     @id @default(cuid())
+  type        Int
+  subheading  String     @default("")
+  description String     @default("")
+  question    Question[] @relation("Question_type")
+}
+
+model Answer {
+  id         String    @id @default(cuid())
+  answer     Int
+  user       User[]    @relation("Answer_user")
+  question   Question? @relation("Answer_question", fields: [questionId], references: [id])
+  questionId String?   @map("question")
+
+  @@index([questionId])
 }

@@ -1,7 +1,20 @@
+import { gql, useQuery } from '@apollo/client';
 import Diagram from '../components/Diagram';
 import Page from '../components/Page';
 
+const TYPES_QUERY = gql`
+  query TYPES_QUERY {
+    types {
+      id
+      type
+      subheading
+    }
+  }
+`;
+
 export default function ResultPage() {
+  const { data, loading, error } = useQuery(TYPES_QUERY);
+  console.log({ data });
   return (
     <Page>
       <div className="box">
