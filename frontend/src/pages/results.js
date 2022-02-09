@@ -1,20 +1,108 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql, useLazyQuery, useQuery } from '@apollo/client';
+import { groupBy, sumBy } from 'lodash';
+import { useEffect, useState } from 'react';
 import Diagram from '../components/Diagram';
 import Page from '../components/Page';
+import { useUser } from '../hooks/User';
 
-const TYPES_QUERY = gql`
-  query TYPES_QUERY {
-    types {
+const TYPE_QUERY = gql`
+  query TYPES_QUERY($type: Int!) {
+    types(where: { type: { equals: $type } }) {
       id
       type
       subheading
+      description
+    }
+  }
+`;
+
+const ANSWERS_QUERY = gql`
+  query ANSWERS_QUERY($id: ID!) {
+    answers(where: { user: { id: { equals: $id } } }) {
+      id
+      answer
+      question {
+        type {
+          type
+        }
+      }
     }
   }
 `;
 
 export default function ResultsPage() {
-  const { data, loading, error } = useQuery(TYPES_QUERY);
-  console.log({ data });
+  const user = useUser();
+  const [result, setResult] = useState(0);
+
+  const numberSpelledOut = [
+    '',
+    'One',
+    'Two',
+    'Three',
+    'Four',
+    'Five',
+    'Six',
+    'Seven',
+    'Eight',
+    'Nine',
+  ];
+
+  const gradeQuiz = (groupedAnswers) => {
+    let highestGrade = 0;
+    let typeWithHighestGrade = 0;
+    // loop over each item in object (grouped by type)
+    for (const [key, value] of Object.entries(groupedAnswers)) {
+      // add up all answers
+      const typeSum = sumBy(value, (item) => item.answer);
+      console.log(key, typeSum);
+      if (typeSum > highestGrade) {
+        highestGrade = typeSum;
+        typeWithHighestGrade = Number(key);
+      }
+    }
+    return typeWithHighestGrade;
+  };
+
+  const [
+    getUserAnswers,
+    { data: answerData, loading: answerLoading, error: answerError },
+  ] = useLazyQuery(ANSWERS_QUERY, {
+    onCompleted: () => {
+      const groupedAnswers = groupBy(
+        answerData.answers,
+        (item) => item.question.type.type
+      );
+      const res = gradeQuiz(groupedAnswers);
+      console.log(res);
+      setResult(res);
+    },
+  });
+
+  useEffect(() => {
+    if (user?.id) {
+      getUserAnswers({
+        variables: {
+          id: user.id,
+        },
+      });
+    }
+  }, [user]);
+
+  const [
+    getTypeDetails,
+    { data: typeData, loading: typeLoading, error: typeError },
+  ] = useLazyQuery(TYPE_QUERY);
+
+  useEffect(() => {
+    if (result) {
+      getTypeDetails({
+        variables: {
+          type: result,
+        },
+      });
+    }
+  }, [result]);
+
   return (
     <Page>
       <div className="box">
@@ -23,17 +111,15 @@ export default function ResultsPage() {
             <div className="font-handwriting text-6xl w-full text-left -mb-4 relative -left-10">
               Hello
             </div>
-            Three
+            {typeData?.types[0] && numberSpelledOut[typeData.types[0].type]}
+            <br />
+            {typeData?.types[0] && typeData.types[0].subheading}
           </div>
-          <div className="max-w-md mx-auto mb-5">
-            <Diagram />
+          <div className="max-w-md mx-auto my-5">
+            <Diagram result={result} />
           </div>
-          <p className="text-left">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            metus lectus, condimentum eget tempus quis, vestibulum at libero.
-            Donec aliquam erat eget risus interdum, nec tincidunt sapien
-            posuere. In suscipit et quam eu pretium. Pellentesque habitant morbi
-            tristique senectus et netus et malesuada fames ac turpis egestas.
+          <p className="text-left mb-0">
+            {typeData?.types[0] && typeData.types[0].description}
           </p>
         </div>
       </div>

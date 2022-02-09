@@ -1,4 +1,4 @@
-export default function Diagram() {
+export default function Diagram({ result }) {
   return (
     <svg
       version="1.1"
@@ -7,6 +7,7 @@ export default function Diagram() {
       y="0px"
       viewBox="0 0 228 224"
       enableBackground="new 0 0 228 224"
+      className={`result-${result}`}
     >
       <g opacity="0.2">
         <path
@@ -175,6 +176,7 @@ export default function Diagram() {
         d="M196.6,159.9L117.7,25.7"
       />
       <path
+        className="circle"
         id="circle-1"
         fillRule="evenodd"
         clipRule="evenodd"
@@ -183,34 +185,35 @@ export default function Diagram() {
 	s-16,7.4-16,16.5S177.2,54,186,54z"
       />
       <path
+        className="number"
         id="number-1"
-        fill="#FFFFFF"
         d="M189.4,44V29.8h-2.2c-0.2,0.6-0.8,0.8-5,1.5v2.4l4.5-0.6v11H189.4z"
       />
       <path
+        className="circle"
         id="circle-2"
         fillRule="evenodd"
         clipRule="evenodd"
-        fill="#ADADAD"
         d="M212,112c8.8,0,16-7.4,16-16.5
 	c0-9.1-7.2-16.5-16-16.5s-16,7.4-16,16.5C196,104.6,203.2,112,212,112z"
       />
       <path
+        className="number"
         id="number-2"
-        fill="#FFFFFF"
         d="M219.8,102v-2.4H211c5-1.9,8-4.3,8.1-7.2c0-0.2,0-0.5,0-0.7c-0.1-2.1-1.5-4.1-6.3-4.1
 	c-3.9,0-5.8,1.5-6.4,3.5c-0.2,0.5-0.3,1.2-0.3,1.7h2.8c0-0.3,0-0.8,0.1-1.1c0.4-1.1,1.5-1.7,3.5-1.7c2.5,0,3.6,0.8,3.6,2.1
 	c0,0.1,0,0.3,0,0.4c0,2.7-3.4,4.4-10.1,7v2.4H219.8z"
       />
       <path
+        className="circle"
         id="circle-3"
         fillRule="evenodd"
         clipRule="evenodd"
-        fill="#E9C376"
         d="M200,184c8.8,0,16-7.4,16-16.5s-7.2-16.5-16-16.5
 	s-16,7.4-16,16.5S191.2,184,200,184z"
       />
       <path
+        className="number"
         id="number-3"
         d="M204.2,166.5c1.8-0.2,2.6-1.2,2.8-2.3c0.1-0.4,0.1-0.9,0-1.5c-0.3-1.8-2.1-3.1-6.2-3.1c-3.7,0-5.7,1.1-6.4,3
 	c-0.2,0.5-0.3,1.2-0.3,1.7h2.7c0-0.3,0.1-0.7,0.2-1c0.4-0.9,1.4-1.5,3.6-1.5c2.5,0,3.4,0.7,3.6,1.5c0.1,0.3,0,0.8-0.1,1.1
@@ -219,46 +222,46 @@ export default function Diagram() {
 	c4.6,0,6.9-1.3,7.2-3.7c0.1-0.5,0-1,0-1.3C207.6,167.7,206.2,166.7,204.2,166.5z"
       />
       <path
+        className="circle"
         id="circle-4"
         fillRule="evenodd"
         clipRule="evenodd"
-        fill="#ADADAD"
         d="M154,224c8.8,0,16-7.4,16-16.5s-7.2-16.5-16-16.5
 	s-16,7.4-16,16.5S145.2,224,154,224z"
       />
       <path
+        className="number"
         id="number-4"
-        fill="#FFFFFF"
         d="M162.1,211v-2.4h-2.7v-8.9h-2.7l-9.2,8.7v2.6h9.3v3h2.7v-3H162.1z M156.7,208.6h-6.4l6.4-5.8
 	V208.6z"
       />
       <path
+        className="circle"
         id="circle-5"
         fillRule="evenodd"
         clipRule="evenodd"
-        fill="#ADADAD"
         d="M73,224c8.8,0,16-7.4,16-16.5S81.8,191,73,191
 	s-16,7.4-16,16.5S64.2,224,73,224z"
       />
       <path
+        className="number"
         id="number-5"
-        fill="#FFFFFF"
         d="M80.8,209.9c0.1-0.5,0.1-1.2,0-1.7c-0.2-2.7-2.4-4.1-6.3-4.1c-2.1,0-4.1,0.6-4.9,1.8l0-3.6
 	h10.2v-2.4H67.2v8h2.7c0.6-1.1,2.1-1.5,3.8-1.5c2.6,0,3.9,0.8,4,2.2c0,0.3,0.1,0.8,0,1.1c-0.1,1.5-1.7,2.2-4,2.2
 	c-2.4,0-3.6-0.5-4.2-1.8c-0.1-0.2-0.1-0.5-0.1-0.7h-2.8c0,0.4,0.1,0.8,0.2,1.2c0.7,2.4,2.9,3.6,7.2,3.6
 	C78.1,214.2,80.6,212.6,80.8,209.9z"
       />
       <path
+        className="circle"
         id="circle-6"
         fillRule="evenodd"
         clipRule="evenodd"
-        fill="#ADADAD"
         d="M27,183c8.8,0,16-7.4,16-16.5S35.8,150,27,150
 	s-16,7.4-16,16.5S18.2,183,27,183z"
       />
       <path
+        className="number"
         id="number-6"
-        fill="#FFFFFF"
         d="M34.8,169.3c0.1-0.6,0-1.6,0-2.1c-0.3-2.1-2.2-3.5-5.9-3.5c-2.7,0-4.7,0.7-5.5,1.5
 	c0-0.4,0-0.9,0.1-1.3c0.2-1.8,1.6-2.9,4.3-2.9c2.4,0,3.2,0.4,3.7,1.2c0.1,0.1,0.1,0.3,0.1,0.4h2.6c0-0.3-0.1-0.8-0.2-1.1
 	c-0.7-1.8-2.4-2.9-6.1-2.9c-3.8,0-6,1.7-6.7,3.9c-0.4,1-0.5,2.3-0.5,3.4c0,1.4,0.3,2.8,0.7,3.8c1.1,2.5,3.5,3.5,6.7,3.5
@@ -266,29 +269,29 @@ export default function Diagram() {
 	c0.4-0.4,2.1-1.4,4.8-1.4c2.7,0,3.7,0.9,3.9,1.8C32.1,168.1,32.1,168.6,32,169z"
       />
       <path
+        className="circle"
         id="circle-7"
         fillRule="evenodd"
         clipRule="evenodd"
-        fill="#ADADAD"
         d="M16,112c8.8,0,16-7.4,16-16.5C32,86.4,24.8,79,16,79
 	C7.2,79,0,86.4,0,95.5C0,104.6,7.2,112,16,112z"
       />
       <path
+        className="number"
         id="number-7"
-        fill="#FFFFFF"
         d="M23.1,90.2v-2.3h-13v2.4h10L12.1,102h3.2L23.1,90.2z"
       />
       <path
+        className="circle"
         id="circle-8"
         fillRule="evenodd"
         clipRule="evenodd"
-        fill="#ADADAD"
         d="M47,59c8.8,0,16-7.4,16-16.5S55.8,26,47,26
 	s-16,7.4-16,16.5S38.2,59,47,59z"
       />
       <path
+        className="number"
         id="number-8"
-        fill="#FFFFFF"
         d="M54.6,45.8c0.1-0.6,0.1-1.4,0-2c-0.3-1.4-1.8-2.5-3.8-2.6c1.9-0.2,2.6-1.3,2.9-2.2
 	c0.1-0.3,0.1-1,0-1.5c-0.3-1.5-2.2-2.8-6.1-2.8c-4,0-5.8,1.4-6.1,2.8c-0.1,0.5,0,1.2,0,1.5c0.2,0.9,1.3,2,2.9,2.2
 	c-1.7,0.1-3.5,1.2-3.8,2.7c-0.1,0.5-0.1,1.2,0,1.8c0.4,2.3,2.5,3.5,7,3.5C52.2,49.2,54.1,47.9,54.6,45.8z M51.2,39.2
@@ -297,16 +300,16 @@ export default function Diagram() {
 	c0.3-1,1.7-1.6,4.4-1.6c3,0,4.2,0.6,4.4,1.6C52.2,44.4,52.2,45,52,45.4z"
       />
       <path
+        className="circle"
         id="circle-9"
         fillRule="evenodd"
         clipRule="evenodd"
-        fill="#ADADAD"
         d="M113,33c8.8,0,16-7.4,16-16.5S121.8,0,113,0
 	S97,7.4,97,16.5S104.2,33,113,33z"
       />
       <path
+        className="number"
         id="number-9"
-        fill="#FFFFFF"
         d="M119.9,19.8c0.5-1.1,0.7-2.5,0.7-3.8c0-1.6-0.3-3.2-1-4.4c-1.1-2-3.3-2.9-6.2-2.9
 	c-4.2,0-6.4,1.7-6.8,3.9c-0.1,0.5-0.1,1.5,0,2.1c0.3,1.9,2.2,3.4,5.7,3.4c2.7,0,4.4-0.7,5.4-1.4c0,0.5-0.1,0.9-0.1,1.3
 	c-0.2,1.7-1.6,2.9-4.2,2.9c-2.2,0-3.3-0.4-3.7-1.2c-0.1-0.1-0.1-0.3-0.1-0.4H107c0,0.3,0.1,0.8,0.2,1.2c0.7,1.7,2.5,2.8,6.3,2.8

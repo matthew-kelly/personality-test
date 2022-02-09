@@ -83,3 +83,67 @@ input[type="checkbox"]:checked + label {
 .error {
   @apply text-red-600;
 }
+
+.circle {
+  @apply fill-silverChalice;
+}
+
+.number {
+  @apply fill-white;
+}
+
+.result-1 #circle-1 {
+  @apply fill-primary;
+}
+.result-2 #circle-2 {
+  @apply fill-primary;
+}
+.result-3 #circle-3 {
+  @apply fill-primary;
+}
+.result-4 #circle-4 {
+  @apply fill-primary;
+}
+.result-5 #circle-5 {
+  @apply fill-primary;
+}
+.result-6 #circle-6 {
+  @apply fill-primary;
+}
+.result-7 #circle-7 {
+  @apply fill-primary;
+}
+.result-8 #circle-8 {
+  @apply fill-primary;
+}
+.result-9 #circle-9 {
+  @apply fill-primary;
+}
+
+.result-1 #number-1 {
+  @apply fill-black;
+}
+.result-2 #number-2 {
+  @apply fill-black;
+}
+.result-3 #number-3 {
+  @apply fill-black;
+}
+.result-4 #number-4 {
+  @apply fill-black;
+}
+.result-5 #number-5 {
+  @apply fill-black;
+}
+.result-6 #number-6 {
+  @apply fill-black;
+}
+.result-7 #number-7 {
+  @apply fill-black;
+}
+.result-8 #number-8 {
+  @apply fill-black;
+}
+.result-9 #number-9 {
+  @apply fill-black;
+}
