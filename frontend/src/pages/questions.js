@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Answers from '../components/Answers';
+import Auth from '../components/Auth';
 import Page from '../components/Page';
 import { useUser } from '../hooks/User';
 
@@ -101,18 +102,22 @@ export default function QuestionsPage() {
   };
 
   return (
-    <Page>
-      <div className="box">
-        <div className="content text-center">
-          <div className="font-display text-10xl leading-none -mt-28">
-            <Image src="/img/number-sign.svg" width={72} height={109} />
-            {questionNumber !== 0 && questionNumber}
+    <Auth>
+      <Page>
+        <div className="box">
+          <div className="content text-center">
+            <div className="font-display text-10xl leading-none -mt-28">
+              <Image src="/img/number-sign.svg" width={72} height={109} />
+              {questionNumber !== 0 && questionNumber}
+            </div>
+            {/* <h1 className="page-title">It's Easy.</h1> */}
+            <p className="text-2xl">
+              {questions.length && questions[currentPosition].question}
+            </p>
+            <Answers submitAnswer={submitAnswer} className="bottom-4 p-2" />
           </div>
-          <h1 className="page-title">It's Easy.</h1>
-          <p>{questions.length && questions[currentPosition].question}</p>
-          <Answers submitAnswer={submitAnswer} className="bottom-4 p-2" />
         </div>
-      </div>
-    </Page>
+      </Page>
+    </Auth>
   );
 }

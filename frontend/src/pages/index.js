@@ -68,7 +68,7 @@ const Home = () => {
           email: data.email,
           password: data.password,
         },
-        // refetchQueries: [{ query: AUTHENTICATE_USER_QUERY }],
+        refetchQueries: [{ query: AUTHENTICATE_USER_QUERY }],
       });
       // if successful, send user to the instructions page
       const token = loggedInUser.data.authenticateUserWithPassword.sessionToken;

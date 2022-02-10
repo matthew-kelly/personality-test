@@ -26,6 +26,7 @@ import {
   timestamp,
   select,
   integer,
+  checkbox,
 } from "@keystone-6/core/fields";
 // The document field is a more complicated field, so it's in its own package
 // Keystone aims to have all the base field types, but you can make your own
@@ -37,6 +38,7 @@ import { document } from "@keystone-6/fields-document";
 // our types to a stricter subset that is type-aware of other lists in our schema
 // that Typescript cannot easily infer.
 import { Lists } from ".keystone/types";
+import { isAdmin, isSignedIn, isUsersItem } from "./access";
 
 // We have a users list, a blogs list, and tags for blog posts, so they can be filtered.
 // Each property on the exported object will become the name of a list (a.k.a. the `listKey`),
@@ -52,6 +54,17 @@ export const lists: Lists = {
       }),
       password: password({ validation: { isRequired: true } }),
       answers: relationship({ ref: "Answer.user", many: true }),
+      isAdmin: checkbox(),
+    },
+    access: {
+      operation: {
+        query: () => true,
+        create: () => true,
+        delete: isAdmin,
+      },
+      filter: {
+        update: isUsersItem,
+      },
     },
     ui: {
       labelField: "name",
@@ -65,6 +78,14 @@ export const lists: Lists = {
       question: text({ validation: { isRequired: true } }),
       type: relationship({ ref: "Type.question" }),
       answer: relationship({ ref: "Answer.question", many: true }),
+    },
+    access: {
+      operation: {
+        query: () => true,
+        create: isAdmin,
+        update: isAdmin,
+        delete: isAdmin,
+      },
     },
     ui: {
       labelField: "question",
@@ -80,6 +101,14 @@ export const lists: Lists = {
       description: text({ ui: { displayMode: "textarea" } }),
       question: relationship({ ref: "Question.type", many: true }),
     },
+    access: {
+      operation: {
+        query: () => true,
+        create: isAdmin,
+        update: isAdmin,
+        delete: isAdmin,
+      },
+    },
     ui: {
       labelField: "type",
       listView: {
@@ -92,6 +121,14 @@ export const lists: Lists = {
       answer: integer({ validation: { isRequired: true } }),
       user: relationship({ ref: "User.answers" }),
       question: relationship({ ref: "Question.answer" }),
+    },
+    access: {
+      operation: {
+        query: isSignedIn,
+        create: isSignedIn,
+        update: isUsersItem,
+        delete: isUsersItem,
+      },
     },
     ui: {
       labelField: "answer",

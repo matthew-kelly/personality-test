@@ -147,3 +147,11 @@ input[type="checkbox"]:checked + label {
 .result-9 #number-9 {
   @apply fill-black;
 }
+
+/* Make clicks pass-through */
+#nprogress {
+  pointer-events: none;
+}
+#nprogress .bar {
+  @apply bg-primary fixed top-0 left-0 w-full h-1 z-50;
+}
