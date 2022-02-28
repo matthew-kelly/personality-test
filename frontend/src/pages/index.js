@@ -41,7 +41,6 @@ const Home = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const user = useUser();
