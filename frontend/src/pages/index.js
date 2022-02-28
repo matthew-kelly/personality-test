@@ -50,7 +50,6 @@ const Home = () => {
   // check to see if the user has an existing session and has already been authenticated
   // adding this here instead of onCompletion so that if the user is already signed in, they can get where they want to go
   useEffect(() => {
-    console.log('isUser', user);
     if (user) {
       // redirect the user to the Directions page
       router.push('/instructions');

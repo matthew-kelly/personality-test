@@ -55,7 +55,6 @@ export default function ResultsPage() {
     for (const [key, value] of Object.entries(groupedAnswers)) {
       // add up all answers
       const typeSum = sumBy(value, (item) => item.answer);
-      console.log(key, typeSum);
       if (typeSum > highestGrade) {
         highestGrade = typeSum;
         typeWithHighestGrade = Number(key);
@@ -77,7 +76,6 @@ export default function ResultsPage() {
         (item) => item.question.type.type
       );
       const res = gradeQuiz(groupedAnswers);
-      console.log(res);
       setResult(res);
     },
   });

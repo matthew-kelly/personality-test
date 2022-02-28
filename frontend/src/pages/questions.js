@@ -91,7 +91,6 @@ export default function QuestionsPage() {
   }, [data]);
 
   const submitAnswer = (answer) => {
-    console.log('submitting answer', answer);
     createAnswer({
       variables: {
         userId: user.id,
